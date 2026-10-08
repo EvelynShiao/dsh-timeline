@@ -1,0 +1,17 @@
+/** 一条收藏记录：摘要与提问时间，用于时间轴打点与列表展示。 */
+export interface StarRecord {
+    readonly title: string;
+    readonly time: number;
+}
+/** 时间轴 UI 状态。 */
+export interface TimelineState {
+    /** 时间轴收起状态（右缘折叠按钮，对应原扩展 _aitTimelineCollapsed）。 */
+    collapsed: boolean;
+}
+/**
+ * 声明时间轴 store（session 作用域实例化：persist key 自动带 sessionId 后缀）。
+ * @returns store handle，供 slot 注册处声明。
+ */
+export declare function createTimelineStore(): import("@deepseek-ai/dsh-client-store").EngineStoreHandle<TimelineState, {
+    setCollapsed: (draft: TimelineState, collapsed: boolean) => void;
+}>;
